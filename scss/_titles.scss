@@ -1,0 +1,35 @@
+.map-title {
+    width: 100%;
+    padding: 0;
+    margin: .8rem 0 .4rem;
+    font-size: 1.4rem;
+    color: $main-font-color;
+    text-align: center;
+    cursor: default;
+}
+
+%h2 {
+    height: auto;
+    width: 92%;
+    padding-bottom: .175rem;
+    margin: 0;
+    border-bottom: .15rem dotted $main-font-color;
+    font-size: 1.15rem;
+    color: $main-font-color;
+}
+
+.guide-title {
+    @extend %h2;
+    text-align: center;
+}
+
+.order-title {
+    @extend %h2;
+    text-align: left;
+}
+
+.detail-title {
+    @extend %h2;
+    margin-top: .35rem;
+    text-align: left; 
+}

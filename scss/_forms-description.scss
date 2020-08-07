@@ -1,0 +1,173 @@
+%container {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+%show {
+    z-index: 1;
+    display: inline;
+    animation: fadeIn 200ms ease-in;
+}
+
+%section {
+    position: fixed;
+    overflow: hidden;
+    height: auto;
+    width: 400px;
+    max-width: 400px;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    background-color: $main-background-color;
+    border: .11rem solid $border-color;
+    border-radius: .4rem;
+}
+
+%section-header {
+    width: 100%;
+    padding: 1rem;
+    color: $sec-font-color;
+    background-color: $theme-color;
+    border-bottom: 3.5px solid $sec-theme-color;
+
+    h3 {
+        margin: 0;
+        font-size: 1.1rem;
+        color: $sec-font-color;
+        
+        span {margin-left: 6px;}
+    }
+}
+
+.login-container {
+    @extend %container;
+
+    &.show-login {
+        @extend %show;
+    }
+
+    .login-form {
+        @extend %section;
+    }
+}
+
+.register-container {
+    @extend %container;
+
+    &.show-register {
+        @extend %show;
+    }
+
+    .register-form {
+        @extend %section;
+    }
+}
+
+.description-container {
+    @extend %container;
+
+    &.show-description {
+        @extend %show;
+    }
+
+    .description {
+        @extend %section;
+
+        &-header {
+            @extend %section-header;
+        }
+
+        &-content {
+            padding: 1rem;
+
+            p {
+                margin: .75rem;
+                color: $main-font-color;
+                span:not(:first-of-type) {margin-top: 1rem;}
+                
+                span {
+                    display: block;
+                    text-align: justify;
+                }
+            }
+        }
+    }
+}
+
+.form-header {
+  @extend %section-header;
+}
+
+.form-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 3rem;
+
+    .form-control {
+        position: relative;
+        height: 5rem;
+        width: 100%;
+        margin-top: 1.25rem;
+        transition: transform 300ms ease-in-out;
+
+        label {
+            display: block;
+            margin-bottom: 3.25px;
+            color: $main-font-color;
+            font-weight: 500;
+        }
+
+        input {
+            display: block;
+            width: 100%;
+            padding: 7.5px;
+            border: .09rem solid $border-color;
+            border-radius: .4rem;
+            color: $border-color;
+            font-size: 1rem;
+            font-weight: 350;
+            transition: transform 300ms ease-in-out;
+            
+            &:focus {
+                outline: 0;
+                border-color: $theme-color;
+            }
+        }
+
+        small {
+            position: absolute;
+            visibility: hidden;
+            height: auto;
+            width: 100%;
+            margin-top: 3.25px;
+        }
+
+        &.success {
+            input {border-color: $success-color;}
+
+            small {
+                visibility: visible;
+                text-align: right;
+                color: $success-color;
+            }
+        }
+
+        &.error {
+            input {border-color: $error-color;}
+
+            small {
+                visibility: visible;
+                color: $error-color;
+
+                span{margin-left: 5px;}
+            }
+        }
+    }
+}

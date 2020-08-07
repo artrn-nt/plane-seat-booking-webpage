@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"
+        integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0=" crossorigin="anonymous"></script>
+    <title>AirBlus.com</title>
+</head>
+
+<body>
+    <header>
+        <div class="brand-logo">
+            <i class="fas fa-paper-plane"></i>
+            <div class="brand-logo-name">AirBlus</div>
+        </div>
+        <nav>
+            <ul>
+                <li><button id="log-btn" class="log-btn">Login</button></li>
+                <li><button id="register-btn" class="register-btn">Sign up</button></li>
+                <li><button id="info-btn" class="info-btn">i</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="main-section">
+        <div class="container-l">
+            <h1>Book your flight with us!</h1>
+            <div class="flight-container">
+                <label>Select a flight:</label>
+                <select id="flight-select" class="flight-select">
+                    <option value="0" selected>New-York, US - Chicago, US</option>
+                    <option value="1">New-York, US - Miami, US</option>
+                    <option value="2">New-York, US - Houston, US</option>
+                    <option value="3">New-York, US - Austin, US</option>
+                    <option value="4">New-York, US - San-Francisco, US</option>
+                    <option value="5">New-York, US - Seattle, US</option>
+                    <option value="6">New-York, US - Montreal, Canada</option>
+                    <option value="7">New-York, US - Toronto, Canada</option>
+                </select>
+            </div>
+            <div class="showcase">
+                <h2 class="guide-title">Seats guide</h2>
+                <ul class="showcase-content">
+                    <li>
+                        <div class="prenium-content">
+                            <div class="seat prenium"></div>
+                            <small class="seat-type">Prenium seat</small>
+                        </div>
+                        <div class="wrap">
+                            <div class="dot"></div>
+                            <small class="seat-price" id="seat-prenium-price">0</small>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="legroom-content">
+                            <div class="seat legroom"></div>
+                            <small class="seat-type">Extra legroom seat</small>
+                        </div>
+                        <div class="wrap">
+                            <div class="dot"></div>
+                            <small class="seat-price" id="seat-legroom-price">0</small>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="front-content">
+                            <div class="seat front"></div>
+                            <small class="seat-type">Front seat</small>
+                        </div>
+                        <div class="wrap">
+                            <div class="dot"></div>
+                            <small class="seat-price" id="seat-front-price">0</small>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="standard-content">
+                            <div class="seat standard"></div>
+                            <small class="seat-type">Standard seat</small>
+                        </div>
+                        <div class="wrap">
+                            <div class="dot"></div>
+                            <small class="seat-price" id="seat-standard-price">0</small>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="seat unavailable"></div>
+                        <small class="seat-type">Occupied</small>
+                    </li>
+                </ul>
+            </div>
+            <div id="order-container" class="order-container">
+                <h2 class="order-title">Your order</h2>
+                <p id="countText" class="text">
+                    You have selected <span>0</span> seat for a total price of <span>0</span>
+                </p>
+                <form id="order-form" class="order-form">
+                    <div id="detail-container" class="detail-container"></div>
+                    <button id="book-btn" class="book-btn" type="submit">Book now</button>
+                    <small id="error-msg" class="error-msg">Error message</small>
+                </form>
+            </div>
+        </div>
+
+        <div class="container-r">
+            <h1 class="map-title">Travellers cabin map: pick your seats</h1>
+            <div class="seat-map">
+                <div class="row">
+                    <div class="column-left">
+                        <div class="col-lab">A</div>
+                        <div class="col-lab">B</div>
+                        <div class="col-lab">C</div>
+                    </div>
+                    <div class="central"></div>
+                    <div class="column-right">
+                        <div class="col-lab">D</div>
+                        <div class="col-lab">E</div>
+                        <div class="col-lab">F</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row left">
+                        <div class="seat unavailable"><span>A01</span></div>
+                        <div class="seat unavailable"><span>B01</span></div>
+                        <div class="seat prenium"><span>C01</span></div>
+                    </div>
+                    <div class="central">1</div>
+                    <div class="row right">
+                        <div class="seat prenium"><span>D01</span></div>
+                        <div class="seat prenium"><span>E01</span></div>
+                        <div class="seat prenium"><span>F01</span></div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="row left">
+                        <div class="seat prenium"><span>A02</span></div>
+                        <div class="seat prenium"><span>B02</span></div>
+                        <div class="seat prenium"><span>C02</span></div>
+                    </div>
+                    <div class="central">2</div>
+                    <div class="row right">
+                        <div class="seat prenium"><span>D02</span></div>
+                        <div class="seat prenium"><span>E02</span></div>
+                        <div class="seat unavailable"><span>F02</span></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row left">
+                        <div class="seat legroom"><span>A03</span></div>
+                        <div class="seat legroom"><span>B03</span></div>
+                        <div class="seat legroom"><span>C03</span></div>
+                    </div>
+                    <div class="central">3</div>
+                    <div class="row right">
+                        <div class="seat legroom"><span>D03</span></div>
+                        <div class="seat legroom"><span>E03</span></div>
+                        <div class="seat unavailable"><span>F03</span></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row left">
+                        <div class="seat legroom"><span>A04</span></div>
+                        <div class="seat unavailable"><span>B04</span></div>
+                        <div class="seat unavailable"><span>C04</span></div>
+                    </div>
+                    <div class="central">4</div>
+                    <div class="row right">
+                        <div class="seat legroom"><span>D04</span></div>
+                        <div class="seat legroom"><span>E04</span></div>
+                        <div class="seat legroom"><span>F04</span></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row left">
+                        <div class="seat front"><span>A05</span></div>
+                        <div class="seat front"><span>B05</span></div>
+                        <div class="seat front"><span>C05</span></div>
+                    </div>
+                    <div class="central">5</div>
+                    <div class="row right">
+                        <div class="seat front"><span>D05</span></div>
+                        <div class="seat front"><span>E05</span></div>
+                        <div class="seat front"><span>F05</span></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row left">
+                        <div class="seat front"><span>A06</span></div>
+                        <div class="seat front"><span>B06</span></div>
+                        <div class="seat front"><span>C06</span></div>
+                    </div>
+                    <div class="central">6</div>
+                    <div class="row right">
+                        <div class="seat front"><span>D06</span></div>
+                        <div class="seat unavailable"><span>E06</span></div>
+                        <div class="seat unavailable"><span>F06</span></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row left">
+                        <div class="seat front"><span>A07</span></div>
+                        <div class="seat front"><span>B07</span></div>
+                        <div class="seat front"><span>C07</span></div>
+                    </div>
+                    <div class="central">7</div>
+                    <div class="row right">
+                        <div class="seat front"><span>D07</span></div>
+                        <div class="seat unavailable"><span>E07</span></div>
+                        <div class="seat unavailable"><span>F07</span></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row left">
+                        <div class="seat front"><span>A08</span></div>
+                        <div class="seat front"><span>B08</span></div>
+                        <div class="seat front"><span>C08</span></div>
+                    </div>
+                    <div class="central">8</div>
+                    <div class="row right">
+                        <div class="seat front"><span>D08</span></div>
+                        <div class="seat front"><span>E08</span></div>
+                        <div class="seat front"><span>F08</span></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row left">
+                        <div class="seat standard"><span>A09</span></div>
+                        <div class="seat unavailable"><span>B09</span></div>
+                        <div class="seat unavailable"><span>C09</span></div>
+                    </div>
+                    <div class="central">9</div>
+                    <div class="row right">
+                        <div class="seat standard"><span>D09</span></div>
+                        <div class="seat standard"><span>E09</span></div>
+                        <div class="seat standard"><span>F09</span></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row left">
+                        <div class="seat standard"><span>A10</span></div>
+                        <div class="seat standard"><span>B10</span></div>
+                        <div class="seat standard"><span>C10</span></div>
+                    </div>
+                    <div class="central">10</div>
+                    <div class="row right">
+                        <div class="seat unavailable"><span>D10</span></div>
+                        <div class="seat standard"><span>E10</span></div>
+                        <div class="seat standard"><span>F10</span></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row left">
+                        <div class="seat standard"><span>A11</span></div>
+                        <div class="seat standard"><span>B11</span></div>
+                        <div class="seat standard"><span>C11</span></div>
+                    </div>
+                    <div class="central">11</div>
+                    <div class="row right">
+                        <div class="seat unavailable"><span>D11</span></div>
+                        <div class="seat unavailable"><span>E11</span></div>
+                        <div class="seat standard"><span>F11</span></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row left">
+                        <div class="seat standard"><span>A12</span></div>
+                        <div class="seat standard"><span>B12</span></div>
+                        <div class="seat standard"><span>C12</span></div>
+                    </div>
+                    <div class="central">12</div>
+                    <div class="row right">
+                        <div class="seat standard"><span>D12</span></div>
+                        <div class="seat standard"><span>E12</span></div>
+                        <div class="seat standard"><span>F12</span></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row left">
+                        <div class="seat unavailable"><span>A13</span></div>
+                        <div class="seat unavailable"><span>B13</span></div>
+                        <div class="seat unavailable"><span>C13</span></div>
+                    </div>
+                    <div class="central">13</div>
+                    <div class="row right">
+                        <div class="seat standard"><span>D13</span></div>
+                        <div class="seat standard"><span>E13</span></div>
+                        <div class="seat unavailable"><span>F13</span></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row left">
+                        <div class="seat standard"><span>A14</span></div>
+                        <div class="seat standard"><span>B14</span></div>
+                        <div class="seat unavailable"><span>C14</span></div>
+                    </div>
+                    <div class="central">14</div>
+                    <div class="row right">
+                        <div class="seat standard"><span>D14</span></div>
+                        <div class="seat standard"><span>E14</span></div>
+                        <div class="seat standard"><span>F14</span></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row left">
+                        <div class="seat standard"><span>A15</span></div>
+                        <div class="seat standard"><span>B15</span></div>
+                        <div class="seat standard"><span>C15</span></div>
+                    </div>
+                    <div class="central">15</div>
+                    <div class="row right">
+                        <div class="seat standard"><span>E15</span></div>
+                        <div class="seat unavailable"><span>F15</span></div>
+                        <div class="seat unavailable"><span>F15</span></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row left">
+                        <div class="seat standard"><span>A16</span></div>
+                        <div class="seat unavailable"><span>B16</span></div>
+                        <div class="seat standard"><span>C16</span></div>
+                    </div>
+                    <div class="central">16</div>
+                    <div class="row right">
+                        <div class="seat standard"><span>D16</span></div>
+                        <div class="seat standard"><span>E16</span></div>
+                        <div class="seat standard"><span>F16</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Confirmation message -->
+
+    <div id="message" class="message-container">
+        <div class="message">
+            <button id="close-msg" class="close-btn">
+                <i class="far fa-times-circle"></i>
+            </button>
+            <div class="message-header">
+                <h3 class="title"><i class="fas fa-check-circle"></i><span class="order-confirm">Order
+                        confirmed</span></h3>
+            </div>
+            <div class="message-content">
+                <p class="msg">
+                    <span>Your order has been received.</span>
+                    <span id="detail-output">Detail output</span>
+                    <span>Please check your email address to download and print your tickets.</span>
+                    <span>Thank you for booking with us!</span>
+                    <span>The AirBlus team wish you a good flight.</span>
+                </p>
+            </div>
+            <div class="paper-plane"><img src="paper-plane.png"></div>
+        </div>
+    </div>
+
+    <!-- Mini Login form-->
+
+    <div id="login-container" class="login-container">
+        <form id="login-form" class="login-form">
+            <button id="close-login" class="close-btn">
+                <i class="far fa-times-circle"></i>
+            </button>
+            <div class="form-header">
+                <h3><i class="fas fa-user"></i><span>Login</span></h3>
+            </div>
+            <div class="form-content">
+                <div class="form-control">
+                    <label for="log-username">Username</label>
+                    <input type="text" id="log-username" placeholder="Enter username" />
+                    <small>Error message</small>
+                </div>
+                <div class="form-control">
+                    <label for="log-password">Password</label>
+                    <input type="password" id="log-password" placeholder="Enter password" />
+                    <small>Error message</small>
+                </div>
+                <button class="form-btn" type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Mini Register form -->
+
+    <div id="register-container" class="register-container">
+        <form id="register-form" class="register-form">
+            <button id="close-register" class="close-btn">
+                <i class="far fa-times-circle"></i>
+            </button>
+            <div class="form-header">
+                <h3><i class="fas fa-user"></i><span>Sign up</span></h3>
+            </div>
+            <div class="form-content">
+                <div class="form-control">
+                    <label for="reg-username">Username</label>
+                    <input type="text" id="reg-username" placeholder="Enter username" />
+                    <small>Error message</small>
+                </div>
+                <div class="form-control">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" placeholder="Enter email" />
+                    <small>Error message</small>
+                </div>
+                <div class="form-control">
+                    <label for="reg-password">Password</label>
+                    <input type="password" id="reg-password" placeholder="Enter password" />
+                    <small>Error message</small>
+                </div>
+                <div class="form-control">
+                    <label for="password">Confirm Password</label>
+                    <input type="password" id="password" placeholder="Enter password a second time" />
+                    <small>Error message</small>
+                </div>
+                <button class="form-btn" type="submit">Sign up</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Description message -->
+
+    <div class="description-container">
+        <div class="description">
+            <button id="close-description" class="close-btn">
+                <i class="far fa-times-circle"></i>
+            </button>
+            <div class="description-header">
+                <h3><i class="fas fa-info-circle"></i><span>Description</span></h3>
+            </div>
+            <div class="description-content">
+                <p>
+                    <span>Welcome on this webpage. The aim of this project was to design a responsive booking webpage /
+                        widget for an imaginary airway company by using web technologies : Vanilla JavaScript, HTML5,
+                        CSS3 and Sass preprocessor.
+                    </span>
+
+                    <span> The graphic interface enable the user to select a flight destination and some seats in
+                        the traveller cabin of a plane. Four types of seat are available.
+                    </span>
+
+                    <span> After picking flight destination and seats positions, the user can submit his order. Data of
+                        the current user selection are set in hidden inputs tags which can be submitted to a backend
+                        service.
+                    </span>
+
+                    <span> Dynamic login and register forms can also be reached using navigation buttons in the page
+                        header.
+                    </span>
+
+                    <span> Thank you for your interest.</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="inner-footer">
+            <div class="social-w">
+                <h3>Follow us:</h3>
+                <div class="wrap-icons">
+                    <div class="wrap-icon"><a href="#" onclick="event.preventDefault()"><i
+                                class="fab fa-facebook-f"></i></a>
+                    </div>
+                    <div class="wrap-icon"><a href="#" onclick="event.preventDefault()"><i
+                                class="fab fa-twitter"></i></a>
+                    </div>
+                    <div class="wrap-icon"><a href="#" onclick="event.preventDefault()"><i
+                                class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="info-section">
+                <div class="info-w">
+                    <span>Services</span>
+                    <a href="#" onclick="event.preventDefault()">Help &amp; Support</a>
+                    <a href="#" onclick="event.preventDefault()">FAQs</a>
+                    <a href="#" onclick="event.preventDefault()">Contact us</a>
+                </div>
+                <div class="info-w">
+                    <span>Company</span>
+                    <a href="#" onclick="event.preventDefault()">About us</a>
+                    <a href="#" onclick="event.preventDefault()">Join us</a>
+                    <a href="#" onclick="event.preventDefault()">Newsletter</a>
+                </div>
+                <div class="info-w">
+                    <span>Contact</span>
+                    <p>
+                        <br>Airblus Limited, Fourth Floor, Hemilgton Buiding</br>
+                        <br>67 Margery Street</br>
+                        <br>London P2 8UI</br>
+                        <br>United Kingdom</br>
+                        <br>Tel: +55 (0) 514 867 9921</br>
+                        <br>contact&#64;airblus.com</br>
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-banner">
+                <a href="#" onclick="event.preventDefault()">Copyright &copy; 2020 Airblus Ltd.</a>
+                <a href="#" onclick="event.preventDefault()">Privacy policy</a>
+                <a href="#" onclick="event.preventDefault()">Terms &amp; Conditions</a>
+                <a href="#" onclick="event.preventDefault()">Secure Payments</a>
+                <div class="p-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-paypal"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

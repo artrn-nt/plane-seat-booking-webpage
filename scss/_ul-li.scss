@@ -1,0 +1,101 @@
+%ul {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    padding: 0;
+    margin: .7rem 0 0;
+    list-style-type: none;
+}
+
+%showcase-li {
+    height: 2.2rem;
+    width: 100%;
+    padding: 0 1.05rem;
+    border-top: .09rem solid $border-color;
+}
+
+%detail-li {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    align-items: stretch;
+    height: 2.05rem;
+    width: 100%;
+    padding-right: 1.05rem;
+    margin: 0;
+    border-top: .09rem solid $border-color;
+    background-color: $sec-background-color;
+    color: $main-font-color;
+    list-style-type: none;
+    overflow: hidden;
+}
+
+.wrap {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: auto;
+    flex-grow: 1;
+
+    .dot{
+        position: relative;
+        width: 100%;
+        height: .75rem;
+        margin: 0 5px 0 5px;
+        border-bottom: dotted 1.5px $main-font-color;
+    }
+}
+
+.showcase-content {
+    @extend %ul;
+
+    li:not(:last-of-type) {
+        @extend %showcase-li;
+        display: flex;
+        justify-content: space-between;
+        flex-flow: row wrap;
+        align-items: stretch;
+
+        .prenium-content, .legroom-content, .front-content, .standard-content {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            width: auto;
+        }
+        
+        .seat-price {width: auto; color: $main-font-color; font-weight: 500;}
+    }
+    
+    li:last-of-type {
+        @extend %showcase-li;
+        display: flex;
+        align-items: center;
+    }
+    
+    .seat-type {width: auto; padding-left: .35rem;}
+
+    .seat:not(.unavailable):hover {cursor: default; transform: scale(1);}
+}
+
+.detail-list {
+    @extend %ul;
+    flex: 1;
+    li {
+        @extend %detail-li;
+
+        .detail-type {display: flex; align-items: center; width: auto;}
+        
+        .total-item-price {color: $theme-color;}
+    }
+
+    li:last-of-type {border-bottom: .09rem solid $border-color;}
+}
+
+.fi {
+    animation: fadeIn 500ms ease-out; 
+}
+
+.fo {
+    animation: fadeOut 500ms ease-in; 
+}
